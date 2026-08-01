@@ -1,0 +1,7 @@
+input:user-valid, textarea:user-valid {
+    border-color: green;
+}
+
+input:user-invalid, textarea:user-invalid {
+    border-color: red;
+}
