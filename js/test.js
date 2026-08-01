@@ -5,6 +5,12 @@ class SunriseWidget extends HTMLElement {
         super();
     
         // this.controller = null;
+        function render(sunrise) {
+            const template = document.getElementById("sunrise-template");
+            const clone = template.content.cloneNode(true);
+
+            clone.querySelector().textContent = sunrise.lat;
+        }
 
         /*
         const template = document.querySelector("sunrise-template");
