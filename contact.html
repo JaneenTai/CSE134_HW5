@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link href="./style/form.css" rel="stylesheet">
+    <script src="./js/form.js" defer></script>
+</head>
+<body>
+    <header><h1>Contact Me</h1></header>
+    <nav>
+        <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about.html">About Me</a></li>
+            <li><a href="./projects.html">Projects</a></li>
+            <li><a href="./resume.html">Resume</a></li>
+            <li><a href="./contact.html">Reach Out</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Get in Touch!</h2>
+        <p><strong>My availability is flexible!</strong> I would <em>love</em> to work with you!</p>
+
+        <fieldset>
+            <legend>Send me your information!</legend>
+
+            <form id="contactform" method="post" action="#">
+                <label for="name">Name: </label>
+                <input type="text" name="name" id="name" required minlength="2" maxlength="50" pattern="[A-Za-z\s'-]+" title="textbox to enter your name"><br>
+                <output id="name-output" for="name" aria-live="polite"></output>
+
+                <div class="error"></div>
+
+                <label for="email">Email: </label>
+                <input type="email" name="email" id="email" required minlength="10" maxlength="100" pattern="[A-Za-z\s'-]+" title="textbox to enter your email"><br>
+                <output id="email-output" for="email" aria-live="polite"></output>
+            
+
+                <label for="message">Anything else you want me to know!</label><br>
+                <textarea id="message" name="message" rows="5" cols="33"></textarea>
+
+                <!-- hidden field for the errors encountered -->
+                <input type="hidden" name="form-errors" id="form-errors">
+
+                <button type="submit" id="button1">Submit</button>
+            </form>
+        </fieldset>
+    </main>
+
+    <footer><p>© Janeen Taitingfong 2026</p></footer>
+</body>
+</html>
