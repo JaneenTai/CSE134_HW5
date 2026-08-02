@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <script src="./js/test.js" defer></script>
+    <!-- <script src="./js/test.js" defer></script> -->
+    <script src="./js/weather.js" defer></script>
     <link href="./style/widget.css" rel="stylesheet">
+
     <link rel="icon" href="./media/favicon.ico">
 </head>
 <body>
@@ -19,23 +21,40 @@
             <li><a href="./contact.html">Reach Out</a></li>
         </ul>
     </nav>
-    <main>
-        <section id="web-component">
-                <sunrise-widget
-                    lat="32.7157"
-                    lng="-117.1611"
-                    date="today">
-                </sunrise-widget>
-                <button class="retry">Retry</button>
+
+    <template id="weather-template">
+        <section class="weather">
+            <h2>My Current Weather</h2>
+
+            <p class="status"></p>
+
+            <ul class="weather-data" hidden>
+                <li>Temperature: <span class="temp"></span>°C</li>
+                <li>Wind Speed: <span class="wind"></span> km/h</li>
+                <li>Weather Code: <span class="code"></span></li>
+            </ul>
+
+            <button class="retry" hidden>Retry</button>
         </section>
-        <article>
-            <picture>
-                <img src="./media/selfie1.JPG" alt="a youn adult woman with shoulder 
-                length hair and black thick rimmed glasses" width="240" height="300">
-            </picture>
-        </article>
-        <!-- <template id="sunrise-template"></template> -->
+    </template>
+
+    <weather-widget lat="32.7157" lon="-117.1611"></weather-widget>
+
+    <noscript>
+        <p>
+            Weather information could not be loaded. Please enable JavaScript
+            or try refreshing the page.
+        </p>
+    </noscript>
+
+    <main>
+        <h2></h2>
+        <picture>
+            <img src="./media/selfie1.JPG" alt="a youn adult woman with shoulder 
+            length hair and black thick rimmed glasses" width="240" height="300">
+        </picture>
     </main>
+
     <footer><p>© Janeen Taitingfong 2026</p></footer>
 </body>
 </html>

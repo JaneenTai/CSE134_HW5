@@ -1,0 +1,22 @@
+weather-widget {
+    display: block;
+    border: 2px solid #ccc;
+    padding: 1rem;
+    max-width: 320px;
+}
+
+weather-widget[data-state="loading"] {
+    opacity: .6;
+}
+
+weather-widget[data-state="ready"] {
+    border-color: green;
+}
+
+weather-widget[data-state="error"] {
+    border-color: red;
+}
+
+weather-widget[data-state="idle"] {
+    border-color: gray;
+}
