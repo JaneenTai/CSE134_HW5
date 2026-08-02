@@ -130,7 +130,6 @@ class WeatherWidget extends HTMLElement {
 
         }
         catch (err) {
-
             clearTimeout(timeout);
 
             if (err.name === "AbortError") {

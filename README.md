@@ -17,9 +17,14 @@ Unfortunately my usage example is very lackluster and minimal due to the explana
 The JS takes my explicitly stated lat/lon values and fetches the current weather for that specific area (San Diego) by adding them into the fetch line's URL (showed above). I tried to add more information on the page like the weather code (i.e sunny, cloudy, etc.) to try and make it more visually appealing but I couldn't get very far without it breaking.
 
 
+# SSG
+I chose Eleventy for my SSG. Using Eleventy allowed me to separate the parts of my website that were "universally" shared (i.e header, footer, nav) into templates that I can reuse.
 
-# SSG (this was inredibly difficult to wrap my head around)
-I chose Eleventy
+Converting the site removed a huge amount of repeated HTML, and instead of copying the same document structure and elements into every page, now I can simply define each element and let the SSG generate each page from a template. Additionally, it was easier to create multiple pages from one base template and adding the varying data afterwards.
+
+I think the biggest cost of using the SSG was learning how it works and needing to know the layout of my site beforehand. Without the SSG I could simply edit each HTML file individually, I had to learn how to create and use layouts and templates. Sometimes small changes made me have to rebuild the site over again which was way more tedious than editing the plain HTML files and seeing the changes immediately.
+
+I don't think I'd use an SSG for a dynamic application, hence the "static" in the name. For example, a site or application that depends on real-time user input or specific content (maybe like a social app) would not make using an SSG a good choice. However, because I was using it for a personal website which doesn't change relatively often, it was a pretty good choice to try an SSG on.
 
 # EC
 I did not do the EC.
