@@ -6,7 +6,9 @@
     <title>Home</title>
     <!-- <script src="./js/test.js" defer></script> -->
     <script src="./js/weather.js" defer></script>
+
     <link href="./style/widget.css" rel="stylesheet">
+    <link href="./style/weather.css" rel="stylesheet">
 
     <link rel="icon" href="./media/favicon.ico">
 </head>
@@ -36,16 +38,16 @@
 
             <button class="retry" hidden>Retry</button>
         </section>
+
+        <noscript>
+            <p>
+                Weather information could not be loaded. Please enable JavaScript
+                or try refreshing the page.
+            </p>
+        </noscript>
     </template>
 
     <weather-widget lat="32.7157" lon="-117.1611"></weather-widget>
-
-    <noscript>
-        <p>
-            Weather information could not be loaded. Please enable JavaScript
-            or try refreshing the page.
-        </p>
-    </noscript>
 
     <main>
         <h2></h2>

@@ -1,7 +1,7 @@
 weather-widget {
     display: block;
     border: 2px solid #ccc;
-    padding: 1rem;
+    padding: .5rem;
     max-width: 320px;
 }
 

@@ -88,6 +88,13 @@ class WeatherWidget extends HTMLElement {
             this.abortController.abort();
         }
 
+        const cached = this.getCachedWeather();
+        if(cached){
+            this.renderWeather(cached);
+            this.setState("ready");
+            return;
+        }
+
         this.abortController = new AbortController();
 
         const timeout = setTimeout(() => {
@@ -97,7 +104,6 @@ class WeatherWidget extends HTMLElement {
         this.setState("loading");
 
         try {
-
             const url =
                 `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,wind_speed_10m,weather_code`;
 
@@ -113,13 +119,14 @@ class WeatherWidget extends HTMLElement {
 
             const data = await response.json();
 
-            this.temp.textContent = data.current.temperature_2m;
-
-            this.wind.textContent = data.current.wind_speed_10m;
-
-            this.code.textContent = data.current.weather_code;
-
+            this.saveCachedWeather(data);
+            this.renderWeather(data);
             this.setState("ready");
+
+            //this.temp.textContent = data.current.temperature_2m;
+            //this.wind.textContent = data.current.wind_speed_10m;
+            //this.code.textContent = data.current.weather_code;
+            //this.setState("ready");
 
         }
         catch (err) {
@@ -140,6 +147,50 @@ class WeatherWidget extends HTMLElement {
             }
         }
     }
+
+    // Cache expires after 10 minutes
+static CACHE_TTL = 10 * 60 * 1000;
+
+getCacheKey() {
+    return `weather-${this.getAttribute("lat")}-${this.getAttribute("lon")}`;
+}
+
+getCachedWeather() {
+    const cached = sessionStorage.getItem(this.getCacheKey());
+
+    if (!cached) return null;
+
+    const parsed = JSON.parse(cached);
+
+    if (Date.now() > parsed.expires) {
+        sessionStorage.removeItem(this.getCacheKey());
+        return null;
+    }
+
+    return parsed.data;
+}
+
+saveCachedWeather(data) {
+    sessionStorage.setItem(
+        this.getCacheKey(),
+        JSON.stringify({
+            expires: Date.now() + WeatherWidget.CACHE_TTL,
+            data
+        })
+    );
+}
+
+renderWeather(data) {
+
+    this.temp.textContent =
+        data.current.temperature_2m;
+
+    this.wind.textContent =
+        data.current.wind_speed_10m;
+
+    this.code.textContent =
+        data.current.weather_code;
+}
 }
 
 customElements.define("weather-widget", WeatherWidget);
