@@ -1,0 +1,16 @@
+<header>
+    <h1>Janeen Taitingfong Personal Website</h1>
+<nav>
+  <ul>
+    {% for item in site %}
+      <li>
+      <a href="{{ item.url }}"
+        {% if item.url in page.url %}
+        {% set currentAttribute = 'aria-current="page"' %}
+        {% endif %}>
+
+        {{ item.label }}</a></li>
+    {% endfor %}
+  </ul>
+</nav>
+</header>
