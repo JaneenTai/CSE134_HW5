@@ -2,7 +2,7 @@
     <h1>Janeen Taitingfong Personal Website</h1>
 <nav>
   <ul>
-    {% for item in site %}
+    {% for item in site.navigation %}
       <li>
       <a href="{{ item.url }}"
         {% if item.url in page.url %}

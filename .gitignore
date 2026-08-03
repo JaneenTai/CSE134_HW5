@@ -144,3 +144,4 @@ vite.config.ts.timestamp-*
 
 # the output directory
 public/
+_site/
